@@ -16,7 +16,7 @@ import { Email } from 'src/email/email.entity';
           host: 'localhost',
           port: 5432,
           password: 'd2nzHHmvhnh7ZhMUsSJwe1za3rhzy3kY',
-          username: 'postgres',
+          username: 'postgress',
           database: 'bmp_db',
           entities: [User, Form, MerchantID, Pos, Email],
           synchronize: true,
