@@ -1,17 +1,18 @@
 import { Injectable, NotFoundException, BadRequestException } from "@nestjs/common";
-import { Pos } from "./pos.entity";
+import { Pos } from "src/pos/pos.entity";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Repository } from "typeorm";
-import { createPosDto } from "./createPos.dto";
+// import { createPosDto } from "./createPos.dto";
 import { Form } from "src/form/entities/form.entity";
 import { randomBytes } from "crypto";
-import {updatePosStatusDto} from "./updateStatus.dto";
+import {updatePosStatusDto} from "src/pos/updateStatus.dto";
 import { Status } from "./enums/status.enum";
 import * as json2xls from 'json2xls';
 import * as fs from 'fs';
 import * as jsonexport from 'jsonexport';
 import * as path from 'path';
 import * as ExcelJS from 'exceljs';
+import { createPosDto } from "src/pos/createPOS.dto";
 
 
 @Injectable()
