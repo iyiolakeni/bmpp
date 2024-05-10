@@ -1,0 +1,16 @@
+export enum CategoryBusinessType {
+    STORE = 'Store/Supermarket',
+    RESTAURANTS = 'Restaurants',
+    WHOLESALE = 'Wholesale/Distributor',
+    TELECOMS = 'Telecoms',
+    FUEL_STATION = 'Fuel Station',
+    HOTEL = 'Hotel/ Guest House',
+    LOGISTICS = 'Logistics (Courier)',
+    NGO = 'Church/ NGO',
+    HOSPITAL = 'Hospital',
+    AIRLINES = 'Airlines',
+    FAST = 'Fast Food',
+    TRAVEL_ANGENCIES = 'Travel Agencies',
+    EMBASSY = 'Embassy',
+    EDUCATION = 'Education/Schools',
+  }
