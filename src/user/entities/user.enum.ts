@@ -4,4 +4,5 @@ export enum JobPosition {
     BUSINESS_DEVELOPER = "Business Developer",
     ACCOUNT_DEVELOPER = "Account Developer",
     NIBSS = "NBSS",
+    ADMIN = "Admin"
   }
