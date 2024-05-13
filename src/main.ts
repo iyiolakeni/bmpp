@@ -25,12 +25,12 @@ async function bootstrap() {
   });
   sessionConfig(app);
   const config = new DocumentBuilder()
-  .setTitle('Test Api')
-  .setDescription('The Sign In User API description')
-  .setVersion('0.1')
+  .setTitle('Bulk Merchant Requisition Portal')
+  .setDescription('The Bulk Merchant Portal')
+  .setVersion('1.0')
   .build();
 const document = SwaggerModule.createDocument(app, config);
-SwaggerModule.setup('api', app, document);
+SwaggerModule.setup('/', app, document);
   await app.listen(5000);
 }
 bootstrap();
