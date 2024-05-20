@@ -64,4 +64,12 @@ export class FormService {
     console.log('Form:', form);
     return this.formRepository.save(form);
   }
+
+  async deleteByID(requestID: string){
+    const form = await this.formRepository.findOne({where: { RequestId: requestID}});
+    if (!form) {
+      throw new NotFoundException('Form not found');
+    }
+    return this.formRepository.remove(form);
+  }
 }

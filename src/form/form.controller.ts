@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post, Put, UploadedFile, UseGuards, UseInterceptors } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put, UploadedFile, UseGuards, UseInterceptors } from '@nestjs/common';
 import { FormService } from './form.service';
 import { CreateFormDto } from './dto/create-form.dto';
 import { UpdateFormStatusDto } from './dto/update-form-status.dto';
@@ -76,5 +76,10 @@ export class FormController {
       body,
       file: file.buffer.toString(),
     };
+  }
+
+  @Delete('delete')
+  deleteMerchant(@Param('requestId') requestId: string){
+    return this.formService.deleteByID(requestId);
   }
 }
