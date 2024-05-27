@@ -38,9 +38,9 @@ export class FormService {
       return found;
     }
 
-  async getFormByAccountOfficer(officer_name: string): Promise<Form[]>{
-    return this.formRepository.find({where: { officer_name: officer_name}});
-  }
+  // async getFormByAccountOfficer(officer_name: string): Promise<Form[]>{
+  //   return this.formRepository.find({where: { officer_name: officer_name}});
+  // }
 
   async updateFormStatus(
     RequestId: string,
