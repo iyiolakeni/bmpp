@@ -1,11 +1,14 @@
-import { Injectable, NotFoundException, BadRequestException } from '@nestjs/common';
+import {
+  Injectable,
+  NotFoundException,
+  BadRequestException,
+} from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { CreateFormDto } from './dto/create-form.dto';
 import { UpdateFormStatusDto } from './dto/update-form-status.dto';
 import { Form } from './entities/form.entity';
 import { FormStatus } from './entities/form.enum';
-
 
 @Injectable()
 export class FormService {
@@ -23,20 +26,22 @@ export class FormService {
     return this.formRepository.find();
   }
 
-    //get forms by RequestID
-    async getFormByRequestId(RequestID: string){
-      let found;
-      try {
-        found = await this.formRepository.findOne({where: { RequestId: RequestID}});
-      } catch (error) {
-        console.error('There was an error:', error);
-      }
-      console.log('Found:', found);
-      if (!found) {
-        throw new NotFoundException('Could not find form');
-      }
-      return found;
+  //get forms by RequestID
+  async getFormByRequestId(RequestID: string) {
+    let found;
+    try {
+      found = await this.formRepository.findOne({
+        where: { RequestId: RequestID },
+      });
+    } catch (error) {
+      console.error('There was an error:', error);
     }
+    console.log('Found:', found);
+    if (!found) {
+      throw new NotFoundException('Could not find form');
+    }
+    return found;
+  }
 
   // async getFormByAccountOfficer(officer_name: string): Promise<Form[]>{
   //   return this.formRepository.find({where: { officer_name: officer_name}});
@@ -46,7 +51,9 @@ export class FormService {
     RequestId: string,
     updateFormStatusDto: UpdateFormStatusDto,
   ): Promise<Form> {
-    const form = await this.formRepository.findOne({where: { RequestId: RequestId}});
+    const form = await this.formRepository.findOne({
+      where: { RequestId: RequestId },
+    });
     if (!form) {
       throw new NotFoundException('Form not found');
     }
@@ -69,8 +76,10 @@ export class FormService {
     return this.formRepository.save(form);
   }
 
-  async deleteByID(requestID: string){
-    const form = await this.formRepository.findOne({where: { RequestId: requestID}});
+  async deleteByID(requestID: string) {
+    const form = await this.formRepository.findOne({
+      where: { RequestId: requestID },
+    });
     if (!form) {
       throw new NotFoundException('Form not found');
     }
