@@ -51,8 +51,10 @@ export class FormController {
   }
 
   @ApiTags('Form')
-  @Get(':accountofficer')
-  
+  @Get(':officer_name')
+  getFormByAccountOfficer(@Param('officer_name') officer_name: string){
+    return this.formService.getFormByAccountOfficer(officer_name);
+  }
 
   @ApiTags('Form')
   @UseInterceptors(FileInterceptor('file'))
