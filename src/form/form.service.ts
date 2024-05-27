@@ -64,7 +64,7 @@ export class FormService {
       throw new BadRequestException('Invalid status transition');
     }
 
-    form.status = updateFormStatusDto.status;
+    form = updateFormStatusDto;
     console.log('Form:', form);
     return this.formRepository.save(form);
   }
