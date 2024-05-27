@@ -50,6 +50,9 @@ export class FormController {
     return this.formService.getFormByRequestId(requestId);
   }
 
+  @ApiTags('Form')
+  @Get(':accountofficer')
+  
 
   @ApiTags('Form')
   @UseInterceptors(FileInterceptor('file'))
@@ -78,6 +81,7 @@ export class FormController {
     };
   }
 
+  @ApiTags('Form')
   @Delete('delete')
   deleteMerchant(@Param('requestId') requestId: string){
     return this.formService.deleteByID(requestId);

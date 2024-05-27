@@ -38,6 +38,20 @@ export class FormService {
       return found;
     }
 
+  async getFormByAccountOfficer(officername: string){
+    let retrieved;
+    try {
+      retrieved = await this.formRepository.find({where: { officer_name: officername}});
+    } catch (error) {
+      console.error('There was an error:', error);
+    }
+    console.log('Found:', retrieved);
+    if (!retrieved) {
+      throw new NotFoundException('Could not find form');
+    }
+    return retrieved;
+  }
+
   async updateFormStatus(
     RequestId: string,
     updateFormStatusDto: UpdateFormStatusDto,
