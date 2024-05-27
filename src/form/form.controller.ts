@@ -50,9 +50,10 @@ export class FormController {
     return this.formService.getFormByRequestId(requestId);
   }
 
-  @ApiTags('Form')
+  @ApiTags('Forms')
   @Get(':officer_name')
   getFormByAccountOfficer(@Param('officer_name') officer_name: string){
+    console.log(officer_name)
     return this.formService.getFormByAccountOfficer(officer_name);
   }
 
