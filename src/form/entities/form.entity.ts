@@ -76,5 +76,8 @@ export class Form {
   ApprovedBy: string;
 
   @Column({nullable: true})
+  ApprovedBy2: string;
+
+  @Column({nullable: true})
   AdditionalNotes: string;
 }
