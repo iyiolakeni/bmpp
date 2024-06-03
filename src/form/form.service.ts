@@ -66,6 +66,7 @@ export class FormService {
 
     form.status = updateFormStatusDto.status;
     form.ApprovedBy = updateFormStatusDto.ApprovedBy;
+    form.ApprovedBy2 = updateFormStatusDto.ApprovedBy2;
     form.AdditionalNotes = updateFormStatusDto.AdditionalNotes;
     console.log('Form:', form);
     return this.formRepository.save(form);
