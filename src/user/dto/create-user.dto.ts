@@ -41,4 +41,7 @@ export class CreateUserDto {
   @ApiProperty()
   // @IsEnum(JobPosition)
   jobPosition: JobPosition;
+
+  @ApiProperty()
+  Location: string;
 }
