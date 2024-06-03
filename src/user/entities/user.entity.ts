@@ -38,6 +38,9 @@ export class User {
     enum: JobPosition,
   })
   jobPosition: JobPosition;
+
+  @Column({nullable: true})
+  Location: string;
 }
 export { JobPosition };
 
