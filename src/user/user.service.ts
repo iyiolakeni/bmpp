@@ -19,7 +19,8 @@ export class UserService {
       surname: user.surname,
       email: user.email,
       password: user.password,
-      jobPosition: user.jobPosition  
+      jobPosition: user.jobPosition,
+      Location: user.Location,
     });
     console.log(newUser)
     return this.userRepository.save(newUser);
