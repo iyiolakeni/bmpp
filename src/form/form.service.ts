@@ -19,11 +19,8 @@ export class FormService {
     return this.formRepository.save(form);
   }
 
-  async getAllForms(limit: number, offset: number): Promise<Form[]> {
-    return this.formRepository.find({
-      take: limit,
-      skip: offset
-    });
+  async getAllForms(): Promise<Form[]> {
+    return this.formRepository.find();
   }
 
     //get forms by RequestID
