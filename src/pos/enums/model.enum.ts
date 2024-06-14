@@ -13,5 +13,6 @@ export enum Model{
     ETRANZACT_POS = 'Etranzact POS',
     PAGA_AGENT_POS = 'Paga Agent POS',
     FLUTTERWAVE_POS = 'Flutterwave POS',
-    OPAY_POS = 'OPay POS'
+    OPAY_POS = 'OPay POS',
+    DEFAULT = 'None'
 }

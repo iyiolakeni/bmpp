@@ -10,25 +10,25 @@ export class Pos{
     @PrimaryGeneratedColumn()
     id: number;
 
-    @Column()
+    @Column({nullable: true})
     NumberOfPos: number;
 
-    @Column()
+    @Column({nullable: true})
     Pos_RequestId: string;
 
-    @Column("text", {array: true})
+    @Column("text", {array: true, nullable: true})
     Pos_SerialNumber: string[];
 
-    @Column()
+    @Column({nullable: true})
     Pos_Accounts: Accounts;
 
-    @Column({type: 'enum', enum: PTSP})
+    @Column({type: 'enum', enum: PTSP, default: PTSP.DEFAULT})
     PTSP: PTSP;
 
-    @Column({type: 'enum', enum: Model, default: Model.CASTLES_TECHNOLOGY_VEGA3000})
+    @Column({type: 'enum', enum: Model, default: Model.DEFAULT})
     Pos_Model: Model;
 
-    @Column({type: 'enum', enum: Processor, default: Processor.PAYMENT_PROCESSOR})
+    @Column({type: 'enum', enum: Processor, default: Processor.DEFAULT})
     Pos_Processor: Processor;
 
     @Column({type:'enum', enum: Status, default: Status.PENDING})
