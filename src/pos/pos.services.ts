@@ -150,10 +150,10 @@ async convertPosRequestsToExcelAndDownload(requestId: string): Promise<string> {
         if(!form){
           throw new NotFoundException('Form not found');
         }
-        if (form.status !== Status.PENDING && form.status !== Status.APPROVED){
+        if (form.status === Status.DELIVERED || form.status === Status.REJECTED ){
           throw new BadRequestException("You can't change this request status");
         }
-        if (dto.status !== 'Approved' && dto.status !== 'Rejected' && dto.status !== 'Deployed'){
+        if (dto.status !== 'Pending'){
           throw new BadRequestException('Invalid status transition');
         }
         form.status = dto.status;
