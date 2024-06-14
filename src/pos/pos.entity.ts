@@ -19,7 +19,7 @@ export class Pos{
     @Column("text", {array: true, nullable: true})
     Pos_SerialNumber: string[];
 
-    @Column({type: 'enum', enum: Accounts, default: PTSP.DEFAULT})
+    @Column({type: 'enum', enum: Accounts, default: Accounts.DEFAULT})
     Pos_Accounts: Accounts;
 
     @Column({type: 'enum', enum: PTSP, default: PTSP.DEFAULT})
