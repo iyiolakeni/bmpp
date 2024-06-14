@@ -10,16 +10,16 @@ export class Pos{
     @PrimaryGeneratedColumn()
     id: number;
 
-    @Column({nullable: true})
+    @Column()
     NumberOfPos: number;
 
-    @Column({nullable: true})
+    @Column()
     Pos_RequestId: string;
 
     @Column("text", {array: true, nullable: true})
     Pos_SerialNumber: string[];
 
-    @Column({nullable: true})
+    @Column({type: 'enum', enum: Accounts, default: PTSP.DEFAULT})
     Pos_Accounts: Accounts;
 
     @Column({type: 'enum', enum: PTSP, default: PTSP.DEFAULT})

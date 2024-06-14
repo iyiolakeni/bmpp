@@ -12,20 +12,6 @@ export class createPosDto{
 
     NumberOfPos: number;
 
-    Pos_SerialNumber: string[];
-
-    @ApiProperty()
-    Pos_Accounts: Accounts;
-
-    @ApiProperty()
-    PTSP: PTSP;
-
-    @ApiProperty()
-    Pos_Model: Model;
-
-    @ApiProperty()
-    Pos_Processor: Processor;
-
     @ApiProperty()
     status: Status;
 }

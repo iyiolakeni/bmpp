@@ -13,6 +13,7 @@ import * as jsonexport from 'jsonexport';
 import * as path from 'path';
 import * as ExcelJS from 'exceljs';
 import { createPosDto } from "src/pos/createPOS.dto";
+import { updatePosDto } from "./updatePOS.dto";
 
 
 @Injectable()
@@ -40,20 +41,35 @@ export class PosService{
         return serialNumbers;
       }
     
-      async createPosRequest(pos: createPosDto) {
-        const findRequestId = await this.formRepository.findOne({where: {RequestId: pos.Pos_RequestId}});
-        const serialNumbers = await this.generateSerialNumbers(findRequestId.No_of_POS_terminal);
-    
+      async createPosRequest(pos:createPosDto){
+        const findRequestId = await this.formRepository.findOne({where: {RequestId: pos.Pos_RequestId}})
+        
         const newPos = this.posRepository.create({
           ...pos,
           Pos_RequestId: findRequestId.RequestId,
           NumberOfPos: findRequestId.No_of_POS_terminal,
-          Pos_SerialNumber: serialNumbers,
         });
     
         await this.posRepository.save(newPos);
         return newPos;
       }
+
+      async updatePosRequest(pos: updatePosDto) {
+        const findRequestId = await this.posRepository.findOne({where: {pos.Pos_RequestId}});
+        const serialNumbers = await this.generateSerialNumbers(findRequestId.No_of_POS_terminal);
+    
+        const updatedPos = await this.posRepository.update(findRequestId.RequestId, {
+          ...pos,
+          Pos_SerialNumber: serialNumbers,
+          Pos_Accounts: pos.Pos_Accounts
+          PTSP: pos.PTSP,
+          Pos_Model: pos.Pos_Model,
+          Pos_Processor: pos.Pos_Processor,
+          status : pos.status
+        });
+    
+        return updatedPos;
+    }
 
     async getAllPosRequests(): Promise<Pos[]>{
         return this.posRepository.find()
