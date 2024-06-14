@@ -45,9 +45,9 @@ export class FormController {
     return this.formService.getAllForms(+limit, +offset);
   }
 
-  @Get()
+  @Get('requests')
   @UseGuards()
-  @ApiTags('Form/allrequest')
+  @ApiTags('Form')
   async getRequest(){
     return this.formService.getRequest();
   }
