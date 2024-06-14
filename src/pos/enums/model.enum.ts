@@ -14,5 +14,5 @@ export enum Model{
     PAGA_AGENT_POS = 'Paga Agent POS',
     FLUTTERWAVE_POS = 'Flutterwave POS',
     OPAY_POS = 'OPay POS',
-    DEFAULT = 'None'
+    DEFAULT = 'Not Assigned'
 }
