@@ -4,6 +4,7 @@ import { ApiBody, ApiTags } from "@nestjs/swagger";
 import { createPosDto } from "./createPOS.dto";
 import { updatePosStatusDto } from "./updateStatus.dto";
 import { Response } from 'express';
+import { updatePosDto } from "./updatePOS.dto";
 
 @Controller('POS')
 export class PosController{
@@ -21,6 +22,12 @@ export class PosController{
     @Get('allrequest')
     async getPosRequest(){
         return this.PosService.getAllPosRequests();
+    }
+
+    @ApiTags('PosRequest')
+    @Put('updateRequest/:requestId')
+    async updatePosRequest(@Param('requestId') requestId: string, @Body() dto: updatePosDto){
+        return this.PosService.updatePosRequest(requestId, dto);
     }
 
     @ApiTags('PosRequest')
