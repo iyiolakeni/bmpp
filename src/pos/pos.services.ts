@@ -53,24 +53,24 @@ export class PosService{
         await this.posRepository.save(newPos);
         return newPos;
       }
-      async updatePosRequest(requestId: string, pos: updatePosDto): Promise<Pos> {
-        const findRequestId = await this.posRepository.findOne({where: {Pos_RequestId: requestId}});
-        const serialNumbers = await this.generateSerialNumbers(findRequestId.NumberOfPos);
-    
-        const updatedPos = this.posRepository.merge(findRequestId, {
-            ...pos,
-            Pos_SerialNumber: serialNumbers,
-            Pos_Accounts: pos.Pos_Accounts,
-            PTSP: pos.PTSP,
-            Pos_Model: pos.Pos_Model,
-            Pos_Processor: pos.Pos_Processor,
-            status : pos.status
-        });
-    
-        await this.posRepository.save(updatedPos);
-    
-        return updatedPos;
-    }
+async updatePosRequest(requestId: string, pos: updatePosDto): Promise<Pos> {
+    const findRequestId = await this.posRepository.findOne({where: {Pos_RequestId: requestId}});
+    const serialNumbers = await this.generateSerialNumbers(findRequestId.NumberOfPos);
+
+    const updatedPos = this.posRepository.merge(findRequestId, {
+        ...pos,
+        Pos_SerialNumber: serialNumbers,
+        Pos_Accounts: pos.Pos_Accounts,
+        PTSP: pos.PTSP,
+        Pos_Model: pos.Pos_Model,
+        Pos_Processor: pos.Pos_Processor,
+        status : pos.status
+    });
+
+    await this.posRepository.save(updatedPos);
+
+    return updatedPos;
+}
 
     async getAllPosRequests(): Promise<Pos[]>{
         return this.posRepository.find()
@@ -170,7 +170,7 @@ async convertPosRequestsToExcelAndDownload(requestId: string): Promise<string> {
         if (form.status === Status.DELIVERED || form.status === Status.REJECTED ){
           throw new BadRequestException("You can't change this request status");
         }
-        if (dto.status !== 'Pending'){
+        if (dto.status === 'Rejected' || dto.status === 'Delivered'){
           throw new BadRequestException('Invalid status transition');
         }
         form.status = dto.status;
