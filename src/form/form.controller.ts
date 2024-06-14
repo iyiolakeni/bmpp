@@ -47,11 +47,11 @@ export class FormController {
 
   @Get()
   @UseGuards()
-  @ApiTags('Form')
+  @ApiTags('Form/allrequest')
   async getRequest(){
     return this.formService.getRequest();
   }
-  
+
   @ApiTags('Form')
   @Get(':requestId')
   getFormByRequestID(@Param('requestId') requestId: string){
