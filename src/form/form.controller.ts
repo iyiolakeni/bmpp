@@ -39,8 +39,10 @@ export class FormController {
   @Get()
   @UseGuards()
   @ApiTags('Form')
-  getAllForms(): Promise<Form[]> {
-    return this.formService.getAllForms();
+  async getAllForms(@Query('limit') limit: number, @Query('offset') offset: number) {
+    limit = limit > 0 ? limit : 10; // default limit to 10
+    offset = offset >= 0 ? offset : 0; // default offset to 0
+    return this.formService.getAllForms(+limit, +offset);
   }
 
   @ApiTags('Form')
