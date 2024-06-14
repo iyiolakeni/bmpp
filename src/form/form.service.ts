@@ -26,6 +26,10 @@ export class FormService {
     });
   }
 
+  async getRequest(): Promise<Form[]>{
+    return this.formRepository.find();
+  }
+
     //get forms by RequestID
     async getFormByRequestId(RequestID: string){
       let found;
