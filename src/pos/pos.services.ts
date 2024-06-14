@@ -54,8 +54,8 @@ export class PosService{
         return newPos;
       }
 
-      async updatePosRequest(pos: updatePosDto) {
-        const findRequestId = await this.posRepository.findOne({where: {Pos_RequestId}});
+      async updatePosRequest(requestId: string, pos: updatePosDto): Promise<Pos[]> {
+        const findRequestId = await this.posRepository.findOne({where: {Pos_RequestId: requestId}});
         const serialNumbers = await this.generateSerialNumbers(findRequestId.No_of_POS_terminal);
     
         const updatedPos = await this.posRepository.update(findRequestId.RequestId, {
